@@ -76,4 +76,26 @@ let orderAlphabetically = (movies) => {
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 
+let turnHoursToMinutes = (movies) => {
+    let newMovies = movies.map((movie) => { return { ...movie } })
+    newMovies = newMovies.map((movie) => {
+        movie.duration = convertFormatToMinutes(movie.duration)
+        return movie
+    })
+    return newMovies
+}
+
+let convertFormatToMinutes = (hourFormat) => {
+    let hours = ''
+    let minutes = '';
+    for (let i = 0; i < hourFormat.length; i++) {
+        if (hourFormat[i] == ('h')) {
+            hours = hoursFormat.substring(0, i)
+        } else if (hourFormat[i] == ('m')) {
+            minutes = hourFormat.substring(i - 2, i)
+        }
+    }
+    return Number(hours) * 60 + Number(minutes)
+}
+
 // BONUS - Iteration 8: Best yearly rate average - Best yearly rate average
